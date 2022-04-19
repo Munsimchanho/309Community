@@ -1,0 +1,318 @@
+:root{
+    --w: 9px;
+    --hier-w: 250px;
+}
+
+
+#post-viewer{
+	position: absolute;
+    display: none;
+    grid-template-columns: var(--hier-w) 1fr;
+    grid-template-rows: 35px auto 0px 0px;
+	width: 1000px;
+    height: 750px;
+	border: solid 2px;
+    border-radius: 15px;
+    background-color: white;	
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+    justify-content: center; /*가로축 정렬*/
+    align-items: center; /*세로축 정렬*/
+    
+    z-index: 100;
+}
+
+#upper-bar{
+	background-color: lightgray;
+    grid-column: 1 / span 2;
+    margin-top: 1px;
+	/* border-radius: inherit inherit 0px 0px; */
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-bottom: solid 2px;
+	/* border-top: solid 2px; */
+    height: 100%;
+}
+
+#post-viewer-close-btn{
+    position: absolute;
+    /* background-color: white; */
+    top: 4px;
+    right: 7px;
+    /* border: solid 1px;
+    border-radius: 12px; */
+    width: 27px;
+    height: 27px;
+    text-align: center;
+    user-select: none;
+}
+
+#post-viewer-close-btn-img{
+    position: absolute;
+    width: 100%;
+    transform: translateX(-50%);
+}
+
+/*------ left-viewer ------*/
+#left-viewer{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-right: solid 2px;
+   
+    
+    
+}
+
+#hierarchy-title{
+    position: relative;
+    border-bottom: solid 1px;
+}
+
+/*------ hierarchy-viewer ------*/
+#hierarchy-viewer{
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    flex: auto;
+}
+
+#post-title{
+    text-align: center;
+    user-select: none;
+}
+
+#hierarchy-viewer input[type="checkbox"]{
+    display: none;
+	/* checked: "checked"; */
+}
+
+/*닫힌 폴더의 아이콘*/
+#hierarchy-viewer input[type="checkbox"]:checked+.label-folder:before{
+    content: '\e801';
+    font-family: fontello;
+    letter-spacing: 9px;
+}
+
+#hierarchy-viewer .selected{
+    background-color: #ddd;
+}
+
+#hierarchy-viewer li{
+    
+    padding-left: 20px;
+}
+
+#hierarchy-viewer ul{
+    position: relative;
+    display: block;
+    min-width: 100%;
+    width: fit-content;
+	list-style: none;
+    padding-left: 0px;
+}
+
+#hierarchy-viewer>ul{
+    position: relative;
+    display: block;
+}
+
+.label-file:before{
+    content: '\e800';
+    font-family: fontello;
+}
+
+.label-folder:before{
+    content: '\e802';
+    font-family: fontello;
+}
+
+/*글자 선택 안 되게(파랑 안 뜨게)*/
+#hierarchy-viewer label {
+    user-select: none;
+    display: inline-block;
+}
+
+#hierarchy-viewer label:before{
+	display: inline;
+    letter-spacing: 6.5px;
+    
+}
+
+.fileLi{
+    width: 100%;
+}
+
+.add-folder-btn{
+    position: absolute;
+    display: none;
+    width: 11.5px;
+    height: 11.5px;
+    margin-top: 5px;
+    margin-left: 15px;
+    z-index: 10;
+}
+
+.selected .add-folder-btn{
+    display: inline-block;
+}
+
+/*------ right-viewer ------*/
+/* iframe에서 화면 크기 right viewer에 맞추는 법
+
+iframe에 들어가는 html의 요소 중 화면 크기에 비례하는 것과 절대적인 것(픽셀)이 같이 있어서
+단순히 document-viewer의 width와 height를 고치면(100% OR 750px) 픽셀로 설정한 요소의 크기가 변하지 않음
+
+그래서 iframe을 scale해야 함
+
+-실패 원인 (3시간)
+right-viewer의 width와 height를 100%(부모에 맞게)로 지정한 뒤 scale함
+-> 비율로 크기를 지정한 요소의 크기가 맞지 않음
+
+-성공 요인
+right-viewer의 width와 height를 100vw, 100vh로 지정하여 화면의 크기에 맞게 함
+-> 비율로 크기를 지정한 요소와 픽셀로 크기를 지정한 요소가 같은 사이즈를 갖게 됨
+-> 이후 부모의 크기에 맞게 scale하여 해결
+*/
+
+#right-viewer{
+    position: relative;
+    height: 100%;
+    /* border-radius: 0px 20px 20px 0px; */
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+#document-viewer{
+    position: absolute;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+	/* border-radius: 0px 0px 13px 0px; */
+    border-bottom-right-radius: inherit;
+    top: 2px;
+    width: auto;
+    height: auto;
+    background: white;
+    
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    overflow: hidden;
+}
+
+#document-viewer img{
+    position: absolute;
+    width: auto;
+    height: auto;
+    transform: translate(0px, 0px);
+}
+
+/*------ hierarchy-viewer resizer ------*/
+#hierarchy-viewer-resizer{
+    position: absolute;
+    left: var(--hier-w);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--w);
+    height: calc(100% - 2 * var(--w) - 4px);
+    z-index: 2;
+    cursor: col-resize;
+}
+
+/*------ resizer ------*/
+#post-viewer-resizer-l{
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: var(--w);
+    height: calc(100% - 2 * var(--w) - 4px);
+    transform: translate(-50%, -50%);
+    /* border: solid 2px; */
+    cursor: ew-resize;
+}
+
+#post-viewer-resizer-r{
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    width: var(--w);
+    height: calc(100% - 2 * var(--w) - 4px);
+    transform: translate(50%, -50%);
+    /* border: solid 2px; */
+    cursor: ew-resize;
+}
+
+#post-viewer-resizer-t{
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    width: calc(100% - 2 * var(--w) - 4px);
+    height: var(--w);
+    transform: translate(-50%, -50%);
+    /* border: solid 2px; */
+    
+    cursor: ns-resize;
+}
+
+#post-viewer-resizer-b{
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    width: calc(100% - 2 * var(--w) - 4px);
+    height: var(--w);
+    transform: translate(-50%, 50%);
+    /* border: solid 2px; */
+    
+    cursor: ns-resize;
+}
+
+#post-viewer-resizer-tl{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: var(--w);
+    height: var(--w);
+    /* transform: translate(0%, -50%); */
+    /* border: solid 2px; */
+    cursor: nw-resize;
+}
+
+#post-viewer-resizer-tr{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: var(--w);
+    height: var(--w);
+    /* transform: translate(50%, -50%); */
+    /* border: solid 2px; */
+    cursor: ne-resize;
+}
+
+#post-viewer-resizer-bl{
+    position: absolute;
+    left: 0px%;
+    bottom: 0px;
+    width: var(--w);
+    height: var(--w);
+    /* transform: translate(-50%, 50%); */
+    /* border: solid 2px; */
+    
+    cursor: ne-resize;
+}
+
+#post-viewer-resizer-br{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: var(--w);
+    height: var(--w);
+    /* transform: translate(50%, 50%); */
+    /* border: solid 2px; */
+    
+    cursor: nw-resize;
+}

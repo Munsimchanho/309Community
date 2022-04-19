@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> 309 </title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="/src/font/font-fontello/css/fontello.css">
+        <link rel="stylesheet" href="/src/css/palette.css">
+        <link rel="stylesheet" href="/src/css/palette_bar.css">
+        <link rel="stylesheet" href="/src/css/palette_edit.css">
+        <link rel="stylesheet" href="/src/css/post_viewer.css">
+        <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Black+Han+Sans&family=Cute+Font&family=Do+Hyeon&family=Dokdo&family=East+Sea+Dokdo&family=Gaegu&family=Gamja+Flower&family=Gothic+A1&family=Gugi&family=Hi+Melody&family=Jua&family=Kirang+Haerang&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Nanum+Gothic+Coding&family=Nanum+Myeongjo&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&family=Single+Day&family=Song+Myung&family=Stylish&family=Sunflower:wght@300&family=Yeon+Sung&display=swap" rel="stylesheet">
+        
+        <script
+          src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+          crossorigin="anonymous"></script>
+        <script src="/src/js/DrawSticker.js" defer></script>
+        <script src="/src/js/StickerMove.js" defer></script>
+        <script src="/src/js/StickerInfoEdit.js" defer></script>
+        <script src="/src/js/PaletteEditManager.js" defer></script>
+        <script src="/src/js/DirectoryManager.js" defer></script>
+        <script src="/src/js/PostViewerManager.js" defer></script>
+        <script src="/src/js/ImageViewer.js" defer></script>
+        <script src="/src/js/PageManager.js" defer></script>
+	</head>
+	<body>
+		<div id="show-description-btn" onclick="showDescription()" draggable="false"> 
+		    <img src="/Img/fontawesome/magnifying-glass-solid (1).svg"/>
+        </div>
+        
+		<div id="description-par">
+            <div id="desc-upper-bar" draggable="false">
+                <div id="unshow-description-btn" onclick="unshowDescription()" draggable="false">
+                    <img src="/Img/cross.png" draggable="false">
+                </div>
+            </div>
+            
+            <div id="description">
+                <h1>
+                    도움말  
+                </h1> 
+                <p>
+                    ✨309 온라인 커뮤니티를 찾아주셔서 감사합니다.✨<br/> 
+                     <br/>해당 사이트는 백마고등학교 3학년 9반 학생들의 소통 및 정보 교류, 포트폴리오 게시 등을 위해 제작한 사이트입니다. 
+					<br/> <ul>
+				<li><strong>포트폴리오</strong> : 보고서 등 자신의 포트폴리오를 게시하고 관리할 수 있는 공간입니다. 자율/진로/동아리 시간에 사용할 자료를 업로드하면 선생님과 친구들이 확인할 수 있습니다.
+				그 외에도, 폴더를 구분하여 타 교과목 발표 자료 등 개인 성취물을 공유하는 포트폴리오로 사용할 수 있습니다.  </li>
+				<li><strong>게시판</strong> : 어려운 문제, 재미있는 사진 등 공유하고 싶은 다양한 내용으로 자유롭게 소통할 수 있는 공간입니다. 현재까지 글은 지원되지 않아 사진 형식의 공유만 가능합니다. 
+				새로운 주제 (스티커) 를 추가하고 싶을 때는 관리자에게 문의하세요.</li>
+				<li><strong>공지사항</strong> : 공지사항 (수행평가 양식, 명단 등) 혹은 중요 가정통신문이 배부되었을 때 해당 파일을 과목별로 정리하여 업로드 할 수 있는 공간입니다. 관리자가 게시할 예정이나, 
+				필요 시 9반 구성원이 적절한 내용을 게시할 수 있습니다.</li>
+				</ul> <br/>
+                </p>
+
+                <ul> ✔ 포트포리오 열람 및 게시 방법 📟 <br/> <br/> 
+                    <li>
+                        스티커를 클릭하여 해당 폴더를 열어볼 수 있습니다.
+                    </li>
+                    <li> 
+                        뷰어의 크기는 커서를 통해 조절할 수 있으며, 상단 바를 더블 클릭 시 전체화면으로 전환할 수 있습니다.
+                    </li>
+                    <li> 
+                        디렉토리에 있는 폴더 아이콘을 눌러 폴더를 열람할 수 있습니다. 
+                    </li>
+                    <li>
+                         
+                      파일을 더블 클릭 시 우측 화면에 파일이 로드됩니다.
+                    </li>
+				 
+                    <li>빈 하위 폴더를 생성하여 포트폴리오를 확장할 수 있습니다. 폴더를 클릭 시 나타나는 + 버튼을 클릭하여 하위 폴더를 생성하세요.</li>
+                    <li>F2 키로 파일/폴더의 이름을 변경하고, Del 키로 삭제할 수 있습니다.</li>
+                    <li>파일/폴더를 드래그하여 이동할 수 있습니다.</li>
+                    <li>원하는 폴더에 파일을 드롭하여 업로드할 수 있습니다.<br/>
+                            <p>(지원하는 확장자명: ['gif', 'jpg', 'jpeg', 'png', 'bmp' ,'ico', 'apng', 'svg', 'pdf'])</p></li>
+
+                        <li>이미지는 마우스 휠을 통해 확대/축소할 수 있으며, 드래그를 통해 움직일 수 있습니다.</li>
+                    
+                        <!-- 파일을 더블 클릭 시 우측 화면에 파일이 로드됩니다. -->
+                    
+			</ul>
+				<br/><br/>
+                <ul> ✔ 관리자 가이드 <br/><br/> 
+                    <!-- <li> 1. 탭 🗂</li>  
+                    탭은 사용자가 각기 다른 성격의 프로폴리오를 취향에 맞게 구분하여 비치할 수 있는 공간입니다.
+                    최대 5개까지 탭을 추가할 수 있습니다. 상단의 + 버튼을 눌러 새로운 탭을 추가하세요.  -->
+
+                    <br/>
+
+                    <li> 1. 팔레트 바🎨 </li>
+                    팔레트 바는 스티커를 수정할 수 있는 공간으로, 화면 우측에서 열고 닫을 수 있습니다.
+                    클릭하여 열면 수정 상태로 전환되며, 위에서부터 순서대로 저장 버튼, 수정 버튼, 추가 버튼, 삭제 버튼입니다.
+                    <ol> 
+                         <li> 기존 스티커 정보를 수정 시, 수정하고 싶은 스티커를 선택한 후 수정 버튼을 눌러 이미지/텍스트를 재입력하고 하단의 'Save' 버튼을 누릅니다.<br/>
+                             &nbsp;이미지 수정 시, 창에 로드된 기존 스티커 정보 위에 마우스를 올리면 'Upload Image' 버튼이 나타납니다.
+                             'Upload Image' 를 클릭하여 본인의 컴퓨터에 있는 이미지 파일을 업로드 할 수 있습니다.<br/>
+                             &nbsp;텍스트 수정 시, 변경된 텍스트는 포스트 뷰어의 제목이 되므로 사용할 포트폴리오의 성격에 맞게 신중히 입력하기 바랍니다.</li> 
+
+                            <li>수정 완료 시 <strong> 반드시 </strong> 저장 버튼을 눌러 변경값을 저장합니다. 저장 버튼이 눌리기 전까지는 변경한 내용이 임시로 저장된 것이므로 새로고침 시 적용되지 않습니다.</li>
+                            <li>추가 버튼을 눌러 새로운 스티커+포스트뷰어를 추가하세요. 추가한 스티커는 수정 버튼을 통해 그 내용을 지정할 수 있습니다.</li> 
+                            <li>삭제하고 싶은 스티커를 선택하고 삭제 벼튼을 누르면 삭제됩니다.</li>
+
+                        <li>스티커를 선택한 후 수정 버튼을 누르면 이미지와 텍스트를 변경할 수 있습니다.<br/>
+                            &nbsp;Image) 이미지 위에 마우스를 올리면 나타나는 'Upload Image'를 클릭하여 이미지를 변경할 수 있습니다.<br/>
+                            &nbsp;Text) 스티커 및 해당 폴더의 이름을 변경할 수 있습니다.<br/>
+                            &nbsp;하단의 'Save'버튼을 눌러 변경한 내용을 임시 저장 및 적용할 수 있습니다.</li>
+
+                        <li>모든 수정이 완료되면 <strong> 반드시 </strong> 저장 버튼을 눌러주세요. 모든 변경 사항은 임시 저장되므로 새로고침 시 적용되지 않습니다.</li>
+                        <li>추가 버튼을 눌러 새로운 스티커를 추가하세요. 추가한 스티커는 기본값이 적용되며, 수정 버튼을 통해 꾸밀 수 있습니다.</li>
+                        <li>삭제 버튼을 눌러 선택한 스티커를 삭제할 수 있습니다.</li>
+                    </ol>
+ 
+					<br/>
+					
+					 <li> 2. 탭 🗂</li>  
+                    탭을 통해 공간을 확장하고 구분할 수 있습니다.
+                        
+					탭은 최대 5개까지 지원합니다. 
+                    <br/><br/>
+                </ul> 
+			<br/><br/>
+			<center>2022.04.17</center>
+			<center>심채린 , 조준호 올림</center>
+			<br/><br/>
+            </div>
+		</div>
+		
+		
+        <div id="page-tab-parent">
+            <img id="create-page-button" src="/Img/fontawesome/plus-solid.svg" onclick="NewPage()">
+        </div>
+        
+        <div id="palette_bar">
+            <div id="palette_bar_open" onclick="ShowPaletteBar()" draggable="false">
+                <img src="/Img/fontawesome/arrow-left-solid.svg" draggable="false">
+            </div>
+            <div id="save_edit_button" onclick="SaveEdit()">
+                <img src="/Img/fontawesome/check-solid.svg" draggable="false">
+            </div>
+            <div id="sticker_edit_button" onclick="StickerEdit()">
+                <img src="/Img/fontawesome/pencil-solid.svg" draggable="false">
+            </div>
+            <div id="add_sticker_button" onclick="AddSticker()">
+                <img src="/Img/fontawesome/plus-solid.svg" draggable="false">
+            </div>
+            <div id="delete_sticker_button" onclick="DeleteSticker()">
+                <img src="/Img/fontawesome/trash-can-solid.svg" draggable="false">
+            </div>
+            
+            <div id="palette_edit" draggable="false">
+                <div id="input-tab-0" class="input-tab" onclick="toggleInput(0)">
+                    <center>Image</center>
+                </div>
+                <div id="input-tab-1" class="input-tab" onclick="toggleInput(1)">
+                    <center>Text</center>
+                </div>
+                
+                
+                <div id="palette_edit_img" draggable="false">
+                    <form onkeydown="return event.key != 'Enter';">
+                        <input type="file"   name="paletteImg" id="stickerImgInput" accept="image/*"/>
+                        <div id="imginput">
+							<img src= "/Img/c1.jpg"/>
+                            <label for="stickerImgInput">Upload Image</label>
+						</div>
+                        
+                        <input type="button" onclick="StickerSaveEdit()" value="제출" id="img-submit" class="submit"/>
+                        <label for="img-submit">Save</label>
+                    </form>
+                </div>
+                
+                <div id="palette_edit_text" draggable="false">
+                    <form onkeydown="return event.key != 'Enter';">
+                        <input type="text"   placeholder="내용을 입력하세요" id="stickerTextInput" name="paletteText"/>
+                        <div id="text-input-line">
+                            
+                        </div>
+                        
+                        <input type="button" onclick="StickerSaveEdit()" value="제출" id="text-submit" class="submit"/>
+                        <label for="text-submit">Save</label>
+                    </form>
+                </div>
+            </div>
+        </div> 
+		
+		<div id="post-viewer" draggable="false">
+            <div id="upper-bar" draggable="false">
+                <div id="post-viewer-close-btn" onclick="ClosePostViewer()" draggable="false">
+                    <img id="post-viewer-close-btn-img" src="/Img/cross.png" draggable="false">
+                </div>
+            </div>
+            
+            <div id="left-viewer" draggable="false">
+                <div id="hierarchy-title" draggable="false">
+                    <h1 id="post-title" draggable="false"></h1>
+                </div>
+                <div id="hierarchy-viewer" draggable="false">
+                </div>
+            </div>
+            
+            
+            <div id="right-viewer" draggable="false">
+            </div>
+            
+            <div id="post-viewer-resizer-l" draggable="false"> </div>
+            <div id="post-viewer-resizer-r" draggable="false"> </div>
+            <div id="post-viewer-resizer-t" draggable="false"> </div>
+            <div id="post-viewer-resizer-b" draggable="false"> </div>
+            
+            <div id="post-viewer-resizer-tl" draggable="false"> </div>
+            <div id="post-viewer-resizer-tr" draggable="false"> </div>
+            <div id="post-viewer-resizer-bl" draggable="false"> </div>
+            <div id="post-viewer-resizer-br" draggable="false"> </div>
+            
+            <div id="hierarchy-viewer-resizer" draggable="false"> </div>
+		</div>
+        
+        <div id="veiling-div" draggable="false"></div>
+	</body>
+</html>
+
+
+
