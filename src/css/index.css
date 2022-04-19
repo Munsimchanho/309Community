@@ -78,17 +78,18 @@
     transition: color .06s ease-out;
 }
 
-
 #index-title h1{
     font-family: "DietDidot Regular";
     font-weight: normal;
     margin: 0px;
     font-size: 7.5em;
     /* letter-spacing: .07em; */
-    letter-spacing: -.05em;
+    letter-spacing: -.075em;
     -webkit-background-clip: text;
     background-image: linear-gradient(90deg,#d66761 16.66666%,#f5c0b2 33.33333%,#aee8fa 50%,#68bde7 66.66666%,#6bd490 83.33333%,#a2f6cf);
 }
+
+
 
 @media only screen and (max-width: 1024px) {
     #index-title h1{
@@ -229,6 +230,15 @@
     transition: height .2s ease-out;
 }
 
+
+
+#input-holder{
+    width: calc(var( --login-scaler) * 10);
+    display: block !important;
+    margin-right: calc(var( --login-scaler) * .8);
+    transform: translateY(-30%);
+}
+
 #login-window .login-user-div div{
     display: flex;
     align-content: center;
@@ -252,6 +262,13 @@
     transition: opacity .1s ease-out;
 }
 
+#login-window .login-id{
+    margin-right: calc(var( --login-scaler) * .25);
+    width: calc(var( --login-scaler) * 10);
+    height: calc(var( --login-scaler) * 1.25);
+    z-index: 1;
+}
+
 #login-window .login-password{
     margin-right: calc(var( --login-scaler) * .25);
     width: calc(var( --login-scaler) * 10);
@@ -272,6 +289,7 @@
 #login-window .login-submit{
     font-size: calc(var( --login-scaler) * 1);
     border: solid 2px;
+    height: calc(var(--login-scaler) * 1.5);
 }
 
 #start-page-footer{

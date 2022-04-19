@@ -31,7 +31,8 @@
                     <div class="title-n">N</div>
                     <div class="title-i">I</div>
                     <div class="title-t">T</div>
-					<div class="title-y">Y</div> 
+					<div class="title-y">Y</div>
+                </h1>
             </div>
             
             <div id="login-btn" onclick='document.querySelector("#login-window").style.display = "block";'>
@@ -56,7 +57,10 @@
                             <p> 유저로그인 </p>
                         </div>
                         <div class="login-password-submit">
-                            <input class="login-password" type="password" placeholder="비밀번호">
+                            <div id="input-holder">
+                                <input class="login-id" type="text" placeholder="아이디">
+                                <input class="login-password" type="password" placeholder="비밀번호">
+                            </div>
                             <div class="login-submit" onclick="login('User', this)">
                                  &nbsp; LOGIN &nbsp;
 							 

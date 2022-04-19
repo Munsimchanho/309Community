@@ -104,10 +104,19 @@ async function showTitle() {
 
 function login(user, elem){
     let formData = new FormData();
+
+    if (user == "User"){
+        user = document.querySelector(".login-id").value;
+        
+        // 범위를 벗어나면
+        if (isNaN(user) || parseInt(user) <= 0 || parseInt(user) > 27){
+            alert("잘못된 아이디입니다.");
+            return;
+        }
+    }
     formData.append("code", "login");
     formData.append("user", user);
-    formData.append("pw", elem.parentNode.querySelector("input[type='password']").value);
-    
+    formData.append("pw", elem.parentNode.querySelector(".login-password").value);
     $.ajax({
         url         : "/src/php/Login.php",
         type        : "POST",
@@ -118,11 +127,12 @@ function login(user, elem){
         data        : formData,
         async       : false,
         success     : function(res){
+            console.log(res);
             if (res == "valid"){
                 console.log("logged in: ", user);
 				if (user == 'Admin'){
 					alert("9반 커뮤니티 관리자로 인증되었습니다.");
-				} else if (user == 'User'){
+				} else {
 					alert("9반 커뮤니티 이용자로 인증되었습니다.");
 				}
                 loginWindow.style.display = "none";

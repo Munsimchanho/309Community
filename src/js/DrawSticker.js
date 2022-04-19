@@ -44,8 +44,6 @@ $.ajax({
         pages = res;
         pageCount = res.length;
         
-         
-        
         // palette를 생성함
         for (let i = 0; i < pageCount; i++){
             // <div id="palette" class="palette">

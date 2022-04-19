@@ -3,7 +3,7 @@ let folderLi;
 let selectedDir;
 
 let loggedIn = false;
-
+let loginInfo = null;
 
 // 로그인 확인
 let formData_1 = new FormData();
@@ -20,16 +20,19 @@ $.ajax({
     async       : false,
     success     : function(res){
         console.log(res);
-         
-		if ( res == 'User' ){
-            loggedIn = true; 
-			document.querySelector("#create-page-button").style.display = "none";
-		} else if ( res == 'Admin' ){
+        
+        if (res == "Admin"){
+            loginInfo = "Admin";
             loggedIn = true;
 			document.querySelector("#palette_bar").style.display = "block";
 		 	if (pageCount < 5){
       	      document.querySelector("#create-page-button").style.display = "inline-block";
             }
+        }
+        else if (res != "none"){
+            loginInfo = res;
+            loggedIn = true; 
+			document.querySelector("#create-page-button").style.display = "none";
         }
     }
 });
@@ -189,7 +192,7 @@ function drawUlWithId(folderId){
         });
         
         draggable.addEventListener("dragend", () => {
-            if (!loggedIn) return;
+            if (!loggedIn || stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] != loginInfo) return;
             
             draggable.classList.remove("dragging");
             
@@ -294,7 +297,7 @@ function drawUlWithId(folderId){
         container.addEventListener("drop", ev => {
             ev.preventDefault();
             
-            if (!loggedIn){ 
+            if (!loggedIn || stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] != loginInfo){ 
 				alert("로그인 후 이용하실 수 있습니다.");
 				return;
 			}
@@ -383,7 +386,7 @@ function checkExtension(ext){
 }
 
 function uploadFile(file, container){
-    if (!loggedIn) return "invalid";
+    if (!loggedIn || stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] != loginInfo) return "invalid";
     
     let curTime = Date.now();
     // 파일의 확장자만 따옴
@@ -523,7 +526,8 @@ function showFile(id){
 }
 
 function createFolder(node){
-    if (!loggedIn) return "invalid";
+    console.log(stickerJson[findIndexWithDir(selectedDir, stickerJson)]);
+    if (!loggedIn || stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] != loginInfo) return "invalid";
     
     let folderName = prompt("생성할 폴더의 이름을 입력하세요.");
     if (folderName != null || folderName.trim() == ""){
@@ -605,7 +609,7 @@ function drawFolderLi(node){
     innerLi.appendChild(nameLabel);
     innerLi.className = "folderLi";
     
-    if (loggedIn ) {
+    if (loggedIn && stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] == loginInfo) {
     // if (true) {
         innerLi.classList.add("draggable");
         innerLi.classList.add("container");
@@ -652,7 +656,7 @@ function drawFileLi(node){
     li.style.minWidth = "calc(100% - 20px)";
     li.style.width = "fit-content";
 
-    if (loggedIn) {
+    if (loggedIn && stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] == loginInfo) {
 	// if (true) {
         li.classList.add("draggable");
         li.draggable = "true";
@@ -717,6 +721,18 @@ function ajaxPost(formData, url){
     });
 }
 
+function findIndexWithDir(dir, list){
+    for (let i = 0; i < list.length; i++){
+        if (list[i] == null) continue;
+        
+        if (list[i].dir == dir){
+            return i;
+        }
+    }
+    
+    return -1;
+}
+
 function findIndexWithId(id, list){
     for (let i = 0; i < list.length; i++){
         if (list[i] == null) continue;
@@ -740,7 +756,7 @@ function findIndexWithName(name, list){
 }
 
 document.addEventListener("keydown", e => {
-    if (!loggedIn) return;
+    if (!loggedIn || stickerJson[findIndexWithDir(selectedDir, stickerJson)]['owner'] != loginInfo) return;
     
     if (e.key == "Delete"){        
         let selectedLi = document.querySelector(".selected");
